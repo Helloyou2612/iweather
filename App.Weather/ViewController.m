@@ -37,8 +37,8 @@
 }
 
 - (IBAction)btnUpdate:(id)sender {
-    int quoteIndex = arc4random_uniform(quotes.count);
-    int locationIndex = arc4random_uniform(locations.count);
+    int quoteIndex = arc4random_uniform((int)quotes.count);
+    int locationIndex = arc4random_uniform((int)locations.count);
     int temperatur = [self getRandomNumberBetween:0 to:40];
     
     self.quote.text = quotes[quoteIndex];
@@ -62,7 +62,7 @@
         weatherphotos = @[@"Cloudy", @"SnowRain", @"SnowsClear", @"SnowsCloudy"];
     }
     
-    int weatherphotoIndex = arc4random_uniform(weatherphotos.count);
+    int weatherphotoIndex = arc4random_uniform((int)weatherphotos.count);
     self.iweatherphoto.image = [UIImage imageNamed:weatherphotos[weatherphotoIndex]];
 
     
