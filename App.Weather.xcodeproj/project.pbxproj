@@ -87,8 +87,8 @@
 				ED6F426D1C18798300C17B54 /* ViewController.m */,
 				ED6F426F1C18798300C17B54 /* Main.storyboard */,
 				ED6F42721C18798300C17B54 /* Assets.xcassets */,
-				ED6F42741C18798300C17B54 /* LaunchScreen.storyboard */,
 				ED6F42771C18798300C17B54 /* Info.plist */,
+				ED6F42741C18798300C17B54 /* LaunchScreen.storyboard */,
 				ED6F42661C18798300C17B54 /* Supporting Files */,
 			);
 			path = App.Weather;
@@ -402,6 +402,7 @@
 				ED6F42871C18798300C17B54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED6F42881C18798300C17B54 /* Build configuration list for PBXNativeTarget "App.WeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +411,7 @@
 				ED6F428A1C18798300C17B54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
