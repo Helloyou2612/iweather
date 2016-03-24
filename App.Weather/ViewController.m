@@ -108,7 +108,7 @@
     {
         [sender setTitle:@"F" forState:UIControlStateNormal];
         
-        int temperaturF = temp*9/5+32;
+        int temperaturF = (temp*1.8)+32;
         NSLog(@"temperaturF %d",(int)self.temperatur.text);
         NSLog(@"temperaturF %d",temperaturF);
         self.temperatur.text = [NSString stringWithFormat:@"%d", temperaturF];
@@ -116,7 +116,7 @@
     else{
         [sender setTitle:@"C" forState:UIControlStateNormal];
         
-        int temperaturC = (temp-32)*5/9;
+        int temperaturC = (temp-32)/1.8;
         NSLog(@"temperaturC %d",(int)self.temperatur.text);
         NSLog(@"temperaturC %d",temperaturC);
         self.temperatur.text = [NSString stringWithFormat:@"%d", temperaturC];
