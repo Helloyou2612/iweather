@@ -1,2 +1,1 @@
-iWeather wirtten by LamMN
-For Objective-C coures
+iWeather wirtten by LamMNFor Objective-C coures
