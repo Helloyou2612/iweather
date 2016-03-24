@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *temperatur;
 @property (weak, nonatomic) IBOutlet UIImageView *iweatherphoto;
 @property (weak, nonatomic) IBOutlet UILabel *quote;
+@property (weak, nonatomic) IBOutlet UIButton *btnTemperatur;
 
 @end
 
@@ -39,33 +40,88 @@
 - (IBAction)btnUpdate:(id)sender {
     int quoteIndex = arc4random_uniform((int)quotes.count);
     int locationIndex = arc4random_uniform((int)locations.count);
-    int temperatur = [self getRandomNumberBetween:0 to:40];
+    int temperatur ;
     
+    NSString *buttonTitle = self.btnTemperatur.currentTitle;
+    
+    if([buttonTitle  isEqual: @"C"])
+    {
+        temperatur = [self getRandomNumberBetween:0 to:37];
+        
+        if(temperatur < 5)
+        {
+            weatherphotos = @[@"Cloudy", @"SnowRain", @"SnowsClear", @"SnowsCloudy"];
+        }
+        else if(temperatur < 20)
+        {
+            weatherphotos = @[@"Cloudy", @"FewClouds", @"HeavyRain", @"SmallRain", @"StormRain", @"ThunderLightning"];
+        }
+        else if(temperatur < 27)
+        {
+            weatherphotos = @[@"Clouds", @"Cloudy", @"FewClouds", @"HeavyRain", @"SmallRain", @"StormRain", @"ThunderLightning"];
+        }
+        else if(temperatur < 37)
+        {
+            weatherphotos = @[@"Clear", @"Clouds", @"FewClouds"];
+        }
+    }
+    else{
+        temperatur = [self getRandomNumberBetween:32 to:99];
+        
+        if(temperatur < 41)
+        {
+            weatherphotos = @[@"Cloudy", @"SnowRain", @"SnowsClear", @"SnowsCloudy"];
+        }
+        else if(temperatur < 68)
+        {
+            weatherphotos = @[@"Cloudy", @"FewClouds", @"HeavyRain", @"SmallRain", @"StormRain", @"ThunderLightning"];
+        }
+        else if(temperatur < 81)
+        {
+            weatherphotos = @[@"Clouds", @"Cloudy", @"FewClouds", @"HeavyRain", @"SmallRain", @"StormRain", @"ThunderLightning"];
+        }
+        else if(temperatur < 99)
+        {
+            weatherphotos = @[@"Clear", @"Clouds", @"FewClouds"];
+        }
+    }
     self.quote.text = quotes[quoteIndex];
     self.location.text = locations[locationIndex];
     self.temperatur.text = [NSString stringWithFormat: @"%d", temperatur];
     
-    if(temperatur < 40 || temperatur > 27)
-    {
-        weatherphotos = @[@"Clear", @"Clouds", @"FewClouds"];
-    }
-    if(temperatur < 27 || temperatur > 20)
-    {
-        weatherphotos = @[@"Clouds", @"Cloudy", @"FewClouds", @"HeavyRain", @"SmallRain", @"StormRain", @"ThunderLightning"];
-    }
-    if(temperatur < 20 || temperatur > 5)
-    {
-        weatherphotos = @[@"Cloudy", @"FewClouds", @"HeavyRain", @"SmallRain", @"StormRain", @"ThunderLightning"];
-    }
-    if(temperatur < 5)
-    {
-        weatherphotos = @[@"Cloudy", @"SnowRain", @"SnowsClear", @"SnowsCloudy"];
-    }
     
     int weatherphotoIndex = arc4random_uniform((int)weatherphotos.count);
     self.iweatherphoto.image = [UIImage imageNamed:weatherphotos[weatherphotoIndex]];
 
     
+}
+- (IBAction)ConvertTemperatur:(id)sender {
+    // Make sure it's a UIButton
+    if (![sender isKindOfClass:[UIButton class]])
+        return;
+    //Get title of btn
+    NSString *buttonTitle = [(UIButton *)sender currentTitle];
+    //convert giá trị text sang int
+    int temp = [self.temperatur.text intValue];
+    
+    if([buttonTitle  isEqual: @"C"])
+    {
+        [sender setTitle:@"F" forState:UIControlStateNormal];
+        
+        int temperaturF = temp*9/5+32;
+        NSLog(@"temperaturF %d",(int)self.temperatur.text);
+        NSLog(@"temperaturF %d",temperaturF);
+        self.temperatur.text = [NSString stringWithFormat:@"%d", temperaturF];
+    }
+    else{
+        [sender setTitle:@"C" forState:UIControlStateNormal];
+        
+        int temperaturC = (temp-32)*5/9;
+        NSLog(@"temperaturC %d",(int)self.temperatur.text);
+        NSLog(@"temperaturC %d",temperaturC);
+        self.temperatur.text = [NSString stringWithFormat:@"%d", temperaturC];
+
+    }
 }
 
 @end
